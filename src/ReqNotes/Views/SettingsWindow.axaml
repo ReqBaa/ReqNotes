@@ -1,0 +1,133 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="255"
+		Width="350" Height="255"
+		WindowStartupLocation="CenterOwner"
+        x:Class="ReqNotes.Views.SettingsWindow"
+        Title="Edit Note - ReqNotes"
+		Icon="/Assets/icon.png">
+
+	<Window.Styles>
+		<Style Selector="DataValidationErrors">
+			<Setter Property="Template">
+				<ControlTemplate>
+					<DockPanel LastChildFill="True">
+						<ContentControl DockPanel.Dock="Right"
+										ContentTemplate="{TemplateBinding ErrorTemplate}"
+										DataContext="{TemplateBinding Owner}"
+										Content="{Binding (DataValidationErrors.Errors)}"
+										IsVisible="{Binding (DataValidationErrors.HasErrors)}"/>
+						<ContentPresenter Name="PART_ContentPresenter"
+										  Background="{TemplateBinding Background}"
+										  BorderBrush="{TemplateBinding BorderBrush}"
+										  BorderThickness="{TemplateBinding BorderThickness}"
+										  CornerRadius="{TemplateBinding CornerRadius}"
+										  ContentTemplate="{TemplateBinding ContentTemplate}"
+										  Content="{TemplateBinding Content}"
+										  Padding="{TemplateBinding Padding}"/>
+					</DockPanel>
+				</ControlTemplate>
+			</Setter>
+			<Setter Property="ErrorTemplate">
+				<DataTemplate>
+					<Canvas Width="14" Height="14" Margin="4 0 1 0"
+							Background="Transparent">
+						<Canvas.Styles>
+							<Style Selector="ToolTip">
+								<Setter Property="Background" Value="#ffe0df"/>
+								<Setter Property="BorderBrush" Value="#c50500"/>
+							</Style>
+						</Canvas.Styles>
+						<ToolTip.Tip>
+							<ItemsControl Items="{Binding}"/>
+						</ToolTip.Tip>
+						<Path Data="{StaticResource icon_warning}"
+							  Stroke="#c50500"
+							  StrokeThickness="2"/>
+					</Canvas>
+				</DataTemplate>
+			</Setter>
+		</Style>
+	</Window.Styles>
+
+	<Window.Content>
+		<Grid ColumnDefinitions="*" RowDefinitions="40,*">
+			<StackPanel Grid.Column="0"
+						Background="{DynamicResource Light2}"
+						Orientation="Horizontal">
+				<Image Source="/Assets/icon.png" Margin="5,5,5,5"/>
+				<Label Content="Settings" Background="{DynamicResource Light2}"
+					   VerticalAlignment="Center" Padding="0" FontSize="18" />
+			</StackPanel>
+
+			<Grid Grid.Column="1" Grid.Row="1"
+				  RowDefinitions="30,30,30,60" ColumnDefinitions="*,*"
+				  Margin="10,25,10,10">
+
+				<Label Grid.Column="0" Grid.Row="0" Content="Current Password"
+					   VerticalContentAlignment="Center" Margin="0,0,0,10" />
+				<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CurrentPassword}"
+						 PasswordChar="*" Watermark="Password..." Margin="0,0,0,10" />
+
+				<Label Grid.Column="0" Grid.Row="1" Content="New Password"
+					   VerticalContentAlignment="Center" Margin="0,0,0,10" />
+				<TextBox Grid.Column="1" Grid.Row="1" Text="{Binding NewPassword}"
+						 PasswordChar="*" Watermark="Password..." Margin="0,0,0,10" />
+
+				<Label Grid.Column="0" Grid.Row="2" Content="Re-New Password"
+					   VerticalContentAlignment="Center" Margin="0,0,0,10" />
+				<TextBox Grid.Column="1" Grid.Row="2" Text="{Binding ReNewPassword}"
+						 PasswordChar="*" Watermark="Password..." Margin="0,0,0,10" />
+
+				<StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+					<ProgressBar IsVisible="{Binding IsBusy}" IsIndeterminate="True" Margin="0,0,0,5" />
+					<Grid ColumnDefinitions="*,*"  Margin="0,0,0,0">
+						<Button Grid.Column="0" Content="Save" HorizontalAlignment="Stretch" Margin="0,0,5,0"
+								Height="40"
+								IsDefault="True"
+								Command="{Binding SaveSettingsCommand}"
+								IsEnabled="{Binding IsFormReady}"
+								VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+							<Button.Styles>
+								<Style Selector="Button">
+									<Setter Property="Foreground" Value="{DynamicResource Light }" />
+									<Setter Property="Background" Value="{DynamicResource Success }" />
+								</Style>
+								<Style Selector="Button:pointerover /template/ ContentPresenter">
+									<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+								</Style>
+								<Style Selector="Button:pressed /template/ ContentPresenter">
+									<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+								</Style>
+							</Button.Styles>
+						</Button>
+
+						<Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Stretch"
+								Click="ButtonCancel_Click" Height="40"
+								VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+							<Button.Styles>
+								<Style Selector="Button">
+									<Setter Property="Foreground" Value="{DynamicResource Light }" />
+									<Setter Property="Background" Value="{DynamicResource Danger }" />
+								</Style>
+								<Style Selector="Button:pointerover /template/ ContentPresenter">
+									<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+								</Style>
+								<Style Selector="Button:pressed /template/ ContentPresenter">
+									<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+								</Style>
+							</Button.Styles>
+						</Button>
+					</Grid>
+					<Label Content="{Binding FormError}"
+					   Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"
+					   VerticalContentAlignment="Center" Foreground="#c50500" />
+				</StackPanel>
+
+			</Grid>
+		</Grid>
+	</Window.Content>
+
+</Window>

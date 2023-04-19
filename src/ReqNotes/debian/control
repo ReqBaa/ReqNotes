@@ -1,0 +1,16 @@
+Source: reqnotes
+Section: misc
+Priority: optional
+Maintainer: unknown <unknown@unknown>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/avaapp
+#Vcs-Git: https://salsa.debian.org/debian/avaapp.git
+Rules-Requires-Root: no
+
+Package: reqnotes
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Personal Note Application
+ Personal Note Application.

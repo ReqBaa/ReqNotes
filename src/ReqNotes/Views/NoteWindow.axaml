@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="250"
+		Width="300" Height="250"
+		WindowStartupLocation="CenterOwner"
+        x:Class="ReqNotes.Views.NoteWindow"
+        Title="Edit Note - ReqNotes"
+		Icon="/Assets/icon.png">
+
+	<Window.Styles>
+		<Style Selector="DataValidationErrors">
+			<Setter Property="Template">
+				<ControlTemplate>
+					<DockPanel LastChildFill="True">
+						<ContentControl DockPanel.Dock="Right"
+										ContentTemplate="{TemplateBinding ErrorTemplate}"
+										DataContext="{TemplateBinding Owner}"
+										Content="{Binding (DataValidationErrors.Errors)}"
+										IsVisible="{Binding (DataValidationErrors.HasErrors)}"/>
+						<ContentPresenter Name="PART_ContentPresenter"
+										  Background="{TemplateBinding Background}"
+										  BorderBrush="{TemplateBinding BorderBrush}"
+										  BorderThickness="{TemplateBinding BorderThickness}"
+										  CornerRadius="{TemplateBinding CornerRadius}"
+										  ContentTemplate="{TemplateBinding ContentTemplate}"
+										  Content="{TemplateBinding Content}"
+										  Padding="{TemplateBinding Padding}"/>
+					</DockPanel>
+				</ControlTemplate>
+			</Setter>
+			<Setter Property="ErrorTemplate">
+				<DataTemplate>
+					<Canvas Width="14" Height="14" Margin="4 0 1 0"
+							Background="Transparent">
+						<Canvas.Styles>
+							<Style Selector="ToolTip">
+								<Setter Property="Background" Value="#ffe0df"/>
+								<Setter Property="BorderBrush" Value="#c50500"/>
+							</Style>
+						</Canvas.Styles>
+						<ToolTip.Tip>
+							<ItemsControl Items="{Binding}"/>
+						</ToolTip.Tip>
+						<Path Data="{StaticResource icon_warning}"
+							  Stroke="#c50500"
+							  StrokeThickness="2"/>
+					</Canvas>
+				</DataTemplate>
+			</Setter>
+		</Style>
+	</Window.Styles>
+
+	<Window.Content>
+		<Grid RowDefinitions="30,30,30,*,50" Margin="10">
+			<Label Grid.Row="0" Content="Title:" />
+			<TextBox Grid.Row="1" Text="{Binding NoteViewModel.Title}" Margin="0,0,0,10" />
+			<Label Grid.Row="2" Content="Content:" />
+			<TextBox Grid.Row="3" Text="{Binding NoteViewModel.Content}" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,10" />
+			<Grid Grid.Row="4" ColumnDefinitions="*,*" Margin="0">
+				<Button Grid.Column="0" Content="Save" HorizontalAlignment="Stretch" Margin="0,0,5,0"
+						IsDefault="True"
+						Command="{Binding SaveNoteCommand}"
+						IsEnabled="{Binding IsFormReady}"
+						Height="40"
+						VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+					<Button.Styles>
+						<Style Selector="Button">
+							<Setter Property="Foreground" Value="{DynamicResource Light }" />
+							<Setter Property="Background" Value="{DynamicResource Success }" />
+						</Style>
+						<Style Selector="Button:pointerover /template/ ContentPresenter">
+							<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+						</Style>
+						<Style Selector="Button:pressed /template/ ContentPresenter">
+							<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+						</Style>
+					</Button.Styles>
+				</Button>
+
+				<Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Stretch"
+						Click="ButtonNoteCancel_Click" Height="40"
+						VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+					<Button.Styles>
+						<Style Selector="Button">
+							<Setter Property="Foreground" Value="{DynamicResource Light }" />
+							<Setter Property="Background" Value="{DynamicResource Danger }" />
+						</Style>
+						<Style Selector="Button:pointerover /template/ ContentPresenter">
+							<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+						</Style>
+						<Style Selector="Button:pressed /template/ ContentPresenter">
+							<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+						</Style>
+					</Button.Styles>
+				</Button>
+			</Grid>
+		</Grid>
+	</Window.Content>
+
+</Window>

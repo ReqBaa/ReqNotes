@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dotnet publish -c Release --self-contained -r linux-x64
+	# auto-build disabled
+
+override_dh_auto_install:
+	# install application
+	mkdir -p debian/reqnotes/usr/share/reqbaa/reqnotes
+	install -D -m 755 bin/Release/net6.0/linux-x64/publish/* debian/reqnotes/usr/share/reqbaa/reqnotes
+	rm debian/reqnotes/usr/share/reqbaa/reqnotes/*.pdb #delete pdb
+	
+	# add shortcut
+	mkdir -p debian/reqnotes/usr/share/applications
+	cp debian/reqnotes.desktop debian/reqnotes/usr/share/applications/reqnotes.desktop
+	
+	# add icon
+	mkdir -p debian/reqnotes/usr/share/pixmaps
+	cp debian/reqnotes.png debian/reqnotes/usr/share/pixmaps/reqnotes.png
+
+	# install debug symbols
+	mkdir -p debian/reqnotes-dbg/usr/share/reqbaa/reqnotes
+	install -D -m 644 bin/Release/net6.0/linux-x64/publish/*.pdb debian/reqnotes-dbg/usr/share/reqbaa/reqnotes
+	dotnet-symbol --symbols bin/Release/net6.0/linux-x64/publish/ -o debian/reqnotes-dbg/usr/share/reqbaa/reqnotes
+	# auto-install disabled
+
+override_dh_link: 
+	dh_link usr/share/reqbaa/reqnotes/ReqNotes /usr/bin/ReqNotes
+
+override_dh_shlibdeps:
+	# shilbdeps disabled
+
+override_dh_strip:
+	# strip disabled

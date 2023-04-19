@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Req Notes
+Comment=Personal Note Application.
+GenericName=Req Notes App
+Exec=/usr/share/reqbaa/reqnotes/ReqNotes %F
+Icon=reqnotes
+Type=Application
+Categories=Note;Notes;
+Keywords=note;notes;

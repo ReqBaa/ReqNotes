@@ -1,0 +1,43 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="10">
+			<!-- Add Controls for Previewer Here -->
+			<Rectangle Width="20" Height="20"
+					   Fill="{DynamicResource Primary}" />
+		</Border>
+	</Design.PreviewWith>
+
+	<!-- Add Styles Here -->
+	<Style>
+		<Style.Resources>
+			<ResourceDictionary>
+				<Color x:Key="Primary">#0d6efd</Color>
+				<Color x:Key="PrimaryHover">#0b5ed7</Color>
+				<Color x:Key="Secondary">#6c757d</Color>
+				<Color x:Key="Secondary2">#A3B0BB</Color>
+				<Color x:Key="Success">#198754</Color>
+				<Color x:Key="SuccessHover">#157347</Color>
+				<Color x:Key="Danger">#dc3545</Color>
+				<Color x:Key="DangerHover">#bb2d3b</Color>
+				<Color x:Key="Warning">#ffc107</Color>
+				<Color x:Key="WarningHover">#ffca2c</Color>
+				<Color x:Key="Info">#0dcaf0</Color>
+				<Color x:Key="InfoHover">#31d2f2</Color>
+				<Color x:Key="Light">#f8f9fa</Color>
+				<Color x:Key="Light2">#eeeeee</Color>
+				<Color x:Key="Dark">#212529</Color>
+				<Color x:Key="Muted">#343a40</Color>
+				<Color x:Key="White">#fff</Color>
+				<Color x:Key="PrimaryDark">#093E8C</Color>
+				<Color x:Key="SecondaryDark">#3B3F43</Color>
+				<Color x:Key="Secondary2Dark">#53595F</Color>
+				<Color x:Key="SuccessDark">#0E4B2F</Color>
+				<Color x:Key="DangerDark">#6D1B23</Color>
+				<Color x:Key="WarningDark">#7E6006</Color>
+				<Color x:Key="LightDark">#878787</Color>
+			</ResourceDictionary>
+		</Style.Resources>
+	</Style>
+
+</Styles>

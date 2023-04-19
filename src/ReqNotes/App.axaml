@@ -1,0 +1,62 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ReqNotes"
+             x:Class="ReqNotes.App">
+
+	<Application.DataTemplates>
+		<local:ViewLocator/>
+	</Application.DataTemplates>
+
+	<Application.Styles>
+		<FluentTheme Mode="Light"/>
+		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+
+		<StyleInclude Source="avares://ReqNotes/Colors.axaml"/>
+		<StyleInclude Source="avares://ReqNotes/Icons.axaml"/>
+
+		<Style Selector="Window">
+			<Setter Property="Background" Value="{DynamicResource Light }" />
+		</Style>
+
+		<Style Selector="Grid">
+			<Setter Property="Background" Value="{DynamicResource Light }" />
+		</Style>
+
+		<Style Selector="StackPanel">
+			<Setter Property="Background" Value="{DynamicResource Light }" />
+		</Style>
+
+		<Style Selector="Border">
+			<Setter Property="BorderBrush" Value="{DynamicResource Primary }" />
+		</Style>
+
+		<Style Selector="Label">
+			<Setter Property="Foreground" Value="{DynamicResource Primary }" />
+			<Setter Property="Background" Value="{DynamicResource Light }" />
+		</Style>
+
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="{DynamicResource Primary }" />
+			<Setter Property="Background" Value="{DynamicResource Light }" />
+		</Style>
+
+		<Style Selector="TextBox">
+			<Setter Property="Foreground" Value="{DynamicResource Primary }" />
+			<Setter Property="Background" Value="{DynamicResource White }" />
+			<Setter Property="BorderBrush" Value="{DynamicResource Primary }" />
+		</Style>
+
+		<Style Selector="Button">
+			<Setter Property="Foreground" Value="{DynamicResource Light }" />
+			<Setter Property="Background" Value="{DynamicResource Primary }" />
+		</Style>
+		<Style Selector="Button:pointerover /template/ ContentPresenter">
+			<Setter Property="Background" Value="{DynamicResource PrimaryHover }" />
+		</Style>
+		<Style Selector="Button:pressed /template/ ContentPresenter">
+			<Setter Property="Background" Value="{DynamicResource PrimaryHover }" />
+		</Style>
+
+	</Application.Styles>
+
+</Application>
