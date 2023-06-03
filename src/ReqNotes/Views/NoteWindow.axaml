@@ -2,11 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="250"
-		Width="300" Height="250"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="275"
+		Width="300" Height="275"
 		WindowStartupLocation="CenterOwner"
         x:Class="ReqNotes.Views.NoteWindow"
         Title="Edit Note - ReqNotes"
+		TransparencyLevelHint="AcrylicBlur"
+        Background="#88ffffff"
+        ExtendClientAreaToDecorationsHint="True"
 		Icon="/Assets/icon.png">
 
 	<Window.Styles>
@@ -53,50 +56,85 @@
 	</Window.Styles>
 
 	<Window.Content>
-		<Grid RowDefinitions="30,30,30,*,50" Margin="10">
-			<Label Grid.Row="0" Content="Title:" />
-			<TextBox Grid.Row="1" Text="{Binding NoteViewModel.Title}" Margin="0,0,0,10" />
-			<Label Grid.Row="2" Content="Content:" />
-			<TextBox Grid.Row="3" Text="{Binding NoteViewModel.Content}" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,10" />
-			<Grid Grid.Row="4" ColumnDefinitions="*,*" Margin="0">
-				<Button Grid.Column="0" Content="Save" HorizontalAlignment="Stretch" Margin="0,0,5,0"
-						IsDefault="True"
-						Command="{Binding SaveNoteCommand}"
-						IsEnabled="{Binding IsFormReady}"
-						Height="40"
-						VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-					<Button.Styles>
-						<Style Selector="Button">
-							<Setter Property="Foreground" Value="{DynamicResource Light }" />
-							<Setter Property="Background" Value="{DynamicResource Success }" />
-						</Style>
-						<Style Selector="Button:pointerover /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
-						</Style>
-						<Style Selector="Button:pressed /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
-						</Style>
-					</Button.Styles>
-				</Button>
+		<Grid ColumnDefinitions="*" RowDefinitions="35,*">
 
-				<Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Stretch"
-						Click="ButtonNoteCancel_Click" Height="40"
-						VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-					<Button.Styles>
-						<Style Selector="Button">
-							<Setter Property="Foreground" Value="{DynamicResource Light }" />
-							<Setter Property="Background" Value="{DynamicResource Danger }" />
-						</Style>
-						<Style Selector="Button:pointerover /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource DangerHover }" />
-						</Style>
-						<Style Selector="Button:pressed /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource DangerHover }" />
-						</Style>
-					</Button.Styles>
-				</Button>
+			<StackPanel Grid.Row="0" Margin="5,5,0,5" Orientation="Horizontal">
+				<Image Source="avares://ReqNotes/Assets/icon.png" Height="20" VerticalAlignment="Center" />
+				<Label Content="Note" VerticalAlignment="Center" Margin="0,0,0,1" />
+			</StackPanel>
+
+			<!--<StackPanel Orientation="Horizontal">
+				<Image Source="/Assets/icon.png" Margin="5,5,5,0"/>
+				<Label Content="Note"
+					   VerticalAlignment="Center" Padding="0,5,0,0" FontSize="18" />
+			</StackPanel>-->
+
+			<Grid Grid.Row="1" Margin="10" RowDefinitions="30,30,30,*,50">
+				<Label Grid.Row="0" Content="Title:" />
+				<TextBox Grid.Row="1" Text="{Binding NoteViewModel.Title}" Margin="0,0,0,10" />
+				<Label Grid.Row="2" Content="Content:" />
+				<TextBox Grid.Row="3" Text="{Binding NoteViewModel.Content}" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,10" />
+				<Grid Grid.Row="4" ColumnDefinitions="*,*" Margin="0">
+					<Button Grid.Column="0" Content="Save" HorizontalAlignment="Stretch" Margin="0,0,5,0"
+							IsDefault="True"
+							Command="{Binding SaveNoteCommand}"
+							IsEnabled="{Binding IsFormReady}"
+							Height="40"
+							VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+						<Grid ColumnDefinitions="26,*" Background="Transparent">
+							<Canvas Grid.Column="0" Height="20" Width="22"
+									Background="Transparent">
+								<Path Width="20" Stretch="Uniform"
+									  Fill="{DynamicResource Light}"
+									  Data="{StaticResource fa_icon_floppy_disk}" />
+							</Canvas>
+							<Label Grid.Column="1" Content="Save" FontSize="14"
+								   Background="Transparent" Foreground="{DynamicResource Light}" />
+						</Grid>
+						<Button.Styles>
+							<Style Selector="Button">
+								<Setter Property="Foreground" Value="{DynamicResource Light }" />
+								<Setter Property="Background" Value="{DynamicResource Success }" />
+							</Style>
+							<Style Selector="Button:pointerover /template/ ContentPresenter">
+								<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+							</Style>
+							<Style Selector="Button:pressed /template/ ContentPresenter">
+								<Setter Property="Background" Value="{DynamicResource SuccessHover }" />
+							</Style>
+						</Button.Styles>
+					</Button>
+
+					<Button Grid.Column="1" Content="Cancel" HorizontalAlignment="Stretch"
+							Click="ButtonNoteCancel_Click" Height="40"
+							VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+						<Grid ColumnDefinitions="26,*" Background="Transparent">
+							<Canvas Grid.Column="0" Height="16" Width="14"
+									Background="Transparent">
+								<Path Width="16" Stretch="Uniform"
+									  Fill="{DynamicResource Light}"
+									  Data="{StaticResource fa_icon_xmark}" />
+							</Canvas>
+							<Label Grid.Column="1" Content="Cancel" FontSize="14"
+								   Background="Transparent" Foreground="{DynamicResource Light}" />
+						</Grid>
+						<Button.Styles>
+							<Style Selector="Button">
+								<Setter Property="Foreground" Value="{DynamicResource Light }" />
+								<Setter Property="Background" Value="{DynamicResource Danger }" />
+							</Style>
+							<Style Selector="Button:pointerover /template/ ContentPresenter">
+								<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+							</Style>
+							<Style Selector="Button:pressed /template/ ContentPresenter">
+								<Setter Property="Background" Value="{DynamicResource DangerHover }" />
+							</Style>
+						</Button.Styles>
+					</Button>
+				</Grid>
 			</Grid>
 		</Grid>
+
 	</Window.Content>
 
 </Window>

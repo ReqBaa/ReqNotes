@@ -1,4 +1,5 @@
 ﻿using ReactiveUI;
+using ReactiveUI.Validation.Extensions;
 using ReactiveUI.Validation.Helpers;
 using System;
 using System.Linq;
@@ -19,7 +20,7 @@ public class NoteWindowViewModel : ReactiveValidationObject
         _appStateModel = RxApp.SuspensionHost.GetAppState<AppStateModel>();
 
         this.WhenAnyValue(x => x.NoteViewModel.HasErrors)
-                .Subscribe(x => this.IsFormReady = !HasErrors);
+                .Subscribe(x => this.IsFormReady = !NoteViewModel.HasErrors);
 
         SaveNoteCommand = ReactiveCommand.CreateFromTask(async () =>
         {

@@ -13,6 +13,15 @@ public class NoteViewModel : ReactiveValidationObject
         this.Title = title;
         this.Content = content;
         this.CreatedDateTime = DateTime.Now;
+
+        this.ValidationRule(
+            viewModel => viewModel.Title,
+            title => !string.IsNullOrWhiteSpace(title),
+            "Title shouldn't be null or white space.");
+        this.ValidationRule(
+            viewModel => viewModel.Content,
+            content => !string.IsNullOrWhiteSpace(content),
+            "Content shouldn't be null or white space.");
     }
 
     public NoteViewModel(string id, string title = "", string content = "", DateTime? createdDateTime = null)

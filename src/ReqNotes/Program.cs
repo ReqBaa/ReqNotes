@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Avalonia.Media;
 using Avalonia.ReactiveUI;
 using System;
 
@@ -18,6 +19,10 @@ namespace ReqNotes
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
                 .LogToTrace()
-                .UseReactiveUI();
+                .UseReactiveUI()
+                .With(new FontManagerOptions
+                {
+                    DefaultFamilyName = "avares://ReqNotes/Assets#MyCustomFont"
+                });
     }
 }

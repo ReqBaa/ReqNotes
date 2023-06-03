@@ -9,58 +9,49 @@
 		WindowStartupLocation="CenterScreen"
         x:Class="ReqNotes.Views.MainWindow"
         Title="Notes - ReqNotes"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="#88ffffff"
+        ExtendClientAreaToDecorationsHint="True"
 		Icon="/Assets/icon.png">
 
-	<Grid ColumnDefinitions="*" RowDefinitions="40,*">
-		<Grid ColumnDefinitions="*,*" Background="{DynamicResource Light2}">
-			<StackPanel Grid.Column="0"
-						Background="{DynamicResource Light2}"
-						Orientation="Horizontal">
-				<Image Source="/Assets/icon.png" Margin="5,5,5,5"/>
-				<Label Content="ReqNotes" Background="{DynamicResource Light2}"
-					   VerticalAlignment="Center" Padding="0" FontSize="18" />
-				<Label Content="{Binding AppVersion}" Background="{DynamicResource Light2}"
-					   VerticalAlignment="Center" Padding="0" FontSize="12" />
-			</StackPanel>
-
-			<StackPanel Grid.Column="1"
-						Orientation="Horizontal"
-						HorizontalAlignment="Right" Background="{DynamicResource Light2}">
-
-				<Button x:Name="buttonSettings"
-						Margin="0,5,10,5" Padding="5,2,5,2"
-						Click="ButtonSettings_Click">
-					<Button.Styles>
-						<Style Selector="Button">
-							<Setter Property="Foreground" Value="{DynamicResource Light }" />
-							<Setter Property="Background" Value="{DynamicResource Primary }" />
-						</Style>
-						<Style Selector="Button:pointerover /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource PrimaryHover }" />
-						</Style>
-						<Style Selector="Button:pressed /template/ ContentPresenter">
-							<Setter Property="Background" Value="{DynamicResource PromaryHover }" />
-						</Style>
-					</Button.Styles>
-
-					<Grid ColumnDefinitions="14,*" Background="Transparent">
-						<Canvas Grid.Column="0" Height="14" Width="14"
-								Background="Transparent">
-							<Path Width="14" Stretch="Uniform"
-								Fill="{DynamicResource Light}"
-								Data="{StaticResource fa_icon_settings}" />
-						</Canvas>
-						<Label Grid.Column="1" Content="Settings" FontSize="14"
-							   Background="Transparent" Foreground="{DynamicResource Light}" />
-					</Grid>
-				</Button>
-			
-			</StackPanel>
-		</Grid>
+	<Grid ColumnDefinitions="*" RowDefinitions="35,*">
+		<StackPanel Orientation="Horizontal">
+			<Image Source="/Assets/icon.png" Margin="5,5,5,0"/>
+			<Label Content="ReqNotes"
+				   VerticalAlignment="Center" Padding="0,5,0,0" FontSize="18" />
+			<Label Content="{Binding AppVersion}"
+				   VerticalAlignment="Center" Padding="0" FontSize="12" />
+			<Button x:Name="buttonSettings" Height="28"
+									Margin="5,5,10,5" Padding="4,2,4,2"
+									CornerRadius="10"
+									Click="ButtonSettings_Click">
+				<Button.Styles>
+					<Style Selector="Button">
+						<Setter Property="Foreground" Value="{DynamicResource Light }" />
+						<Setter Property="Background" Value="{DynamicResource Primary }" />
+					</Style>
+					<Style Selector="Button:pointerover /template/ ContentPresenter">
+						<Setter Property="Background" Value="{DynamicResource PrimaryHover }" />
+					</Style>
+					<Style Selector="Button:pressed /template/ ContentPresenter">
+						<Setter Property="Background" Value="{DynamicResource PrimaryHover }" />
+					</Style>
+				</Button.Styles>
+				<Grid ColumnDefinitions="18,*" Background="Transparent">
+					<Canvas Grid.Column="0" Height="18" Width="16">
+						<Path Width="16" Stretch="Uniform"
+							Fill="{DynamicResource Light}"
+							Data="{StaticResource fa_icon_settings}" />
+					</Canvas>
+					<!--<Label Grid.Column="1" Content="Settings" FontSize="15"
+							   Margin="0,2,0,0"
+							   Foreground="{DynamicResource Light}" />-->
+				</Grid>
+			</Button>
+		</StackPanel>
 
 		<Controls:NotesControl
-			Grid.Column="1" Grid.Row="1" Margin="20,20,0,5"
-			x:Name="notesControl" />
+			Grid.Row="1" Margin="5,10,0,5" />
 
 	</Grid>
 

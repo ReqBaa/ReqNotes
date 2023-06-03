@@ -11,7 +11,7 @@ namespace ReqNotes
 {
     public partial class App : Application
     {
-        public static readonly string AppVersion = "1.7";
+        public static readonly string AppVersion = "1.8";
 
         public override void Initialize()
         {
@@ -38,6 +38,13 @@ namespace ReqNotes
             if (!Directory.Exists(appFolder))
                 Directory.CreateDirectory(appFolder);
             string appstatefilefullname = Path.Combine(appFolder, "appstate.data");
+            if (!File.Exists(appstatefilefullname))
+            {
+                var file = File.Create(appstatefilefullname);
+                file.Close();
+                file.Dispose();
+            }
+
 
             // Check version
             bool needUpdate = CheckUpdateRequired();
@@ -90,6 +97,8 @@ namespace ReqNotes
         {
             if (!File.Exists(appstatefilefullname)) return;
             string file = File.ReadAllText(appstatefilefullname);
+            if (string.IsNullOrEmpty(file)) return;
+
             AppStateModel? statefile = JsonSerializer.Deserialize<AppStateModel>(file);
             if (statefile == null) return;
 
