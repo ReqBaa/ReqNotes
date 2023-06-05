@@ -21,7 +21,7 @@
   </p>
 </div>
 
-![version](https://img.shields.io/badge/version-1.7-blue)
+![version](https://img.shields.io/badge/version-1.8-blue)
 ![Downloads](https://img.shields.io/github/downloads/ReqBaa/ReqNotes/total) ![Contributors](https://img.shields.io/github/contributors/ReqBaa/ReqNotes?color=dark-green) ![Issues](https://img.shields.io/github/issues/ReqBaa/ReqNotes) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- ABOUT THE PROJECT -->
@@ -49,13 +49,13 @@ ReqNotes:
 _Windows:_
 * Download the latest version and Install:
 
-  * x64 (v1.7): [Download](https://github.com/ReqBaa/ReqNotes/releases/download/v1.7/reqnotessetup-x64-1.7.exe)
+  * x64 (v1.8): [Download](https://github.com/ReqBaa/ReqNotes/releases/download/v1.8/reqnotessetup-x64-1.8.exe)
 
-  * x86 (v1.7): [Download](https://github.com/ReqBaa/ReqNotes/releases/download/v1.7/reqnotessetup-x86-1.7.exe)
+  * x86 (v1.8): [Download](https://github.com/ReqBaa/ReqNotes/releases/download/v1.8/reqnotessetup-x86-1.8.exe)
 
 _Linux:_
 - Download and Install deb:
-  - amd64 (v1.7): [Download](https://github.com/ReqBaa/repo/raw/33d80f78a776e165f8caede21a8ed697468bf451/pool/main/r/reqnotes/reqnotes_1.7-0ubuntu1_amd64.deb)
+  - amd64 (v1.8): [Download](https://github.com/ReqBaa/repo/raw/main/pool/main/r/reqnotes/reqnotes_1.8-0ubuntu1_amd64.deb)
 - or Install with apt:
   - Open terminal:
   ```sh
