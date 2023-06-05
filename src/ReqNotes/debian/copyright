@@ -1,15 +1,15 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: reqnotes
 Upstream-Contact: <preferred name and address to reach the upstream project>
-Source: <url://example.com>
+Source: https://github.com/ReqBaa/ReqNotes
 
 Files: *
-Copyright: <years> <put author's name and email here>
-           <years> <likewise for another author>
+Copyright: akifmt
+
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2023 unknown <unknown@unknown>
+Copyright: 2023 akifmt <akifmt@gmail.com>
 License: GPL-3.0+
 
 License: GPL-3.0+
