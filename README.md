@@ -21,7 +21,7 @@
   </p>
 </div>
 
-![version](https://img.shields.io/badge/version-1.8-blue)
+![version](https://img.shields.io/github/v/release/ReqBaa/ReqNotes?color=blue)
 ![Downloads](https://img.shields.io/github/downloads/ReqBaa/ReqNotes/total) ![Contributors](https://img.shields.io/github/contributors/ReqBaa/ReqNotes?color=dark-green) ![Issues](https://img.shields.io/github/issues/ReqBaa/ReqNotes) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 <!-- ABOUT THE PROJECT -->
